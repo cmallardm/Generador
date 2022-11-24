@@ -25,10 +25,9 @@ using System.Collections.Generic;
 
 namespace Generador
 {
-    List<string> listaSNT;
     public class Lenguaje : Sintaxis
     {
-
+        List<string> listaSNT;
         public Lenguaje()
         {
             listaSNT = new List<string>();

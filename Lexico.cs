@@ -32,11 +32,11 @@ namespace Generador
             log = new StreamWriter("c.log");
             log.AutoFlush = true;
 
-            log = new StreamWriter("c:\\generador\\Lenguaje.cs");
-            log.AutoFlush = true;
+            lenguaje = new StreamWriter("c:\\Generico\\Lenguaje.cs");
+            lenguaje.AutoFlush = true;
 
-            log = new StreamWriter("c:\\generador\\Program.cs");
-            log.AutoFlush = true;
+            programa = new StreamWriter("c:\\Generico\\Program.cs");
+            programa.AutoFlush = true;
 
             //log.WriteLine("Primer constructor");
             log.WriteLine("Archivo: c.gram");
@@ -59,11 +59,11 @@ namespace Generador
             log = new StreamWriter(pathLog);
             log.AutoFlush = true;
 
-            log = new StreamWriter("c:\\generador\\Lenguaje.cs");
-            log.AutoFlush = true;
+            lenguaje = new StreamWriter("c:\\Generico\\Lenguaje.cs");
+            lenguaje.AutoFlush = true;
 
-            log = new StreamWriter("c:\\generador\\Program.cs");
-            log.AutoFlush = true;
+            programa = new StreamWriter("c:\\Generico\\Program.cs");
+            programa.AutoFlush = true;
 
             log.WriteLine("Archivo: " + nombre);
             log.WriteLine(DateTime.Now);

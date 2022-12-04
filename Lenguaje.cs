@@ -6,7 +6,7 @@
 // Requerimiento 2.- Declarar un atributo primeraProduccion de tipo string y actualizarlo con la primera
 //                   producción de la gramática. *
 
-// Requerimiento 3.- La primera producción es pública, y el resto privadas.
+// Requerimiento 3.- La primera producción es pública, y el resto privadas. * 
 
 // Requerimiento 4.- El constructor Lexico() parametrizado debe validar que
 //                   la extensión del archivo a compilar sea .gram, si no existe debe lanzar una excepción.
@@ -16,7 +16,7 @@
 
 // Requerimiento 6.- Agregar el paréntesis izquierdo y derecho escapados en la matriz de transiciones.
 
-// Requerimiento 6.- Implementar el OR y la cerradura epsilon
+// Requerimiento 7.- Implementar el OR y la cerradura epsilon
 
 using System;
 using System.Collections.Generic;

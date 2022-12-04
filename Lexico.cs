@@ -68,6 +68,10 @@ namespace Generador
             log.WriteLine("Archivo: " + nombre);
             log.WriteLine(DateTime.Now);
 
+            string extension = Path.GetExtension(nombre);
+            if (extension != ".gram")
+                throw new Error("Error: El archivo no es de extensión .gram", log);
+            
             if (File.Exists(nombre))
             {
                 archivo = new StreamReader(nombre);

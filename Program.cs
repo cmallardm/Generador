@@ -21,6 +21,7 @@ namespace Generador
             static void instanciaObjeto()
             {
                 Lenguaje a = new Lenguaje();
+                a.Gramatica();
                 /*{
                     while (!a.FinArchivo())
                     {

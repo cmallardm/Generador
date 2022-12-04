@@ -38,29 +38,27 @@ namespace Generador
             primeraProduccion = "";
         }
 
+
+        //metodo que identa el contenido de programa
+
+        string tabulacion = "";
         public string calculadorTab(string cadenas)
         {
-            string cadenaMod = cadenas;
-
-            string tabulacion = "";
-
-            int contadorTab = 0;
 
             if (cadenas.Contains("{"))
             {
-                contadorTab++;
+                tabulacion = tabulacion + "\t";
+                return tabulacion.Substring(0, tabulacion.Length - 1) + cadenas;
             }
-            if (cadenas.Contains("}"))
+            else if (cadenas.Contains("}"))
             {
-                contadorTab--;
+                tabulacion = tabulacion.Substring(0, tabulacion.Length - 1);
+                return tabulacion + cadenas;
             }
-
-            for (int i = 0; i < contadorTab; i++)
+            else
             {
-                tabulacion += "\t";
+                return tabulacion + cadenas;
             }
-
-            return tabulacion + cadenaMod;
         }
 
         public void Gramatica()
@@ -84,7 +82,6 @@ namespace Generador
 
         private void Programa(string produccionPrincipal)
         {
-
             programa.WriteLine(calculadorTab("using System;"));
             programa.WriteLine(calculadorTab("using System.IO;"));
             programa.WriteLine(calculadorTab("using System.Collections.Generic;"));
@@ -111,6 +108,7 @@ namespace Generador
             programa.WriteLine(calculadorTab("}"));
             programa.WriteLine(calculadorTab("}"));
             programa.WriteLine(calculadorTab("}"));
+
         }
 
         private void cabecera()

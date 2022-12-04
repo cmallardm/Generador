@@ -38,9 +38,6 @@ namespace Generador
             primeraProduccion = "";
         }
 
-
-        //metodo que identa el contenido de programa
-
         string tabulacion = "";
         public string calculadorTab(string cadenas)
         {
@@ -64,7 +61,7 @@ namespace Generador
         public void Gramatica()
         {
             cabecera();
-            Programa("Programa");
+            Programa(primeraProduccion);
             cabeceraLenguaje();
             listadeProducciones();
             lenguaje.WriteLine("}");
@@ -80,7 +77,7 @@ namespace Generador
             listaSNT.Add(contenido);
         }
 
-        private void Programa(string produccionPrincipal)
+        private void Programa(string primeraProduccion)
         {
             programa.WriteLine(calculadorTab("using System;"));
             programa.WriteLine(calculadorTab("using System.IO;"));
@@ -124,9 +121,22 @@ namespace Generador
 
         }
 
+        int contadorProducciones = 0;
         private void listadeProducciones()
         {
-            lenguaje.WriteLine("private void " + getContenido() + "()");
+            string tipoProduccion = "";
+
+            if (contadorProducciones == 0)
+            {
+                tipoProduccion = "public";
+                primeraProduccion = getContenido();
+            }
+            else
+            {
+                tipoProduccion = "private";
+            }
+
+            lenguaje.WriteLine(tipoProduccion + " void " + getContenido() + "()");
             lenguaje.WriteLine("{");
             match(Tipos.SNT);
             match(Tipos.Produce);
@@ -135,6 +145,7 @@ namespace Generador
             lenguaje.WriteLine("}");
             if (!FinArchivo())
             {
+                contadorProducciones++;
                 listadeProducciones();
             }
         }

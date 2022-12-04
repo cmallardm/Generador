@@ -9,17 +9,6 @@ namespace Generador
     {
         static void Main(string[] args)
         {
-            static void instanciaObjeto()
-            {
-                Lenguaje a = new Lenguaje();
-                {
-                    while (!a.FinArchivo())
-                    {
-                        a.NextToken();
-                    }
-                }
-            }
-
             try
             {
                 instanciaObjeto();
@@ -28,6 +17,16 @@ namespace Generador
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+            }
+            static void instanciaObjeto()
+            {
+                Lenguaje a = new Lenguaje();
+                /*{
+                    while (!a.FinArchivo())
+                    {
+                        a.NextToken();
+                    }
+                }*/
             }
         }
     }

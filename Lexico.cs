@@ -26,7 +26,8 @@ namespace Generador
         public Lexico()
         {
             linea = 1;
-            string path = "c.gram";
+
+            string path = "c2.gram";
             bool existencia = File.Exists(path);
 
             log = new StreamWriter("c.log");
@@ -38,10 +39,9 @@ namespace Generador
             programa = new StreamWriter("c:\\Generico\\Program.cs");
             programa.AutoFlush = true;
 
-            //log.WriteLine("Primer constructor");
             log.WriteLine("Archivo: c.gram");
-            log.WriteLine(DateTime.Now);//Requerimiento 1:
-            //Investigar como checar si un archivo existe o no existe 
+            log.WriteLine(DateTime.Now);
+
             if (existencia == true)
             {
                 archivo = new StreamReader(path);

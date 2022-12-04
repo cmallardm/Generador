@@ -20,7 +20,7 @@ namespace Generador
             }
             static void instanciaObjeto()
             {
-                Lenguaje a = new Lenguaje();
+                Lenguaje a = new Lenguaje("c2.gram");
                 a.Gramatica();
                 /*{
                     while (!a.FinArchivo())

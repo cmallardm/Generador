@@ -1,9 +1,9 @@
-Archivo: c.gram
-12/3/2022 11:04:01 PM
+Archivo: c2.gram
+12/3/2022 11:29:17 PM
 Gramatica ST 
 : ST 
 cplusplus ST 
 
  FinProduccion 
-Program ST 
+Programa ST 
 Error de sintaxis, se espera un SNT en linea: 2

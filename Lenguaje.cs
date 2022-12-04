@@ -9,14 +9,14 @@
 // Requerimiento 3.- La primera producción es pública, y el resto privadas. * 
 
 // Requerimiento 4.- El constructor Lexico() parametrizado debe validar que
-//                   la extensión del archivo a compilar sea .gram, si no existe debe lanzar una excepción.
+//                   la extensión del archivo a compilar sea .gram, si no existe debe lanzar una excepción. *
 
 // Requerimiento 5.- Resolver la ambiguedad de ST, y SNT
 //                   Recorrer linea por linea el archivo gram opara para exraer el nombre de cada producción
 
 // Requerimiento 6.- Agregar el paréntesis izquierdo y derecho escapados en la matriz de transiciones.
 
-// Requerimiento 7.- Implementar el OR y la cerradura epsilon
+// Requerimiento 7.- Implementar la cerradura epsilon
 
 using System;
 using System.Collections.Generic;
@@ -61,7 +61,10 @@ namespace Generador
         public void Gramatica()
         {
             cabecera();
+
+            primeraProduccion = getContenido();
             Programa(primeraProduccion);
+        
             cabeceraLenguaje();
             listadeProducciones();
             lenguaje.WriteLine("}");

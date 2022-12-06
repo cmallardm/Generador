@@ -58,6 +58,26 @@ namespace Generador
             }
         }
 
+        string tabulacion2 = "";
+        public string calculadorTab2(string cadenas)
+        {
+
+            if (cadenas.Contains("{"))
+            {
+                tabulacion2 = tabulacion2 + "\t";
+                return tabulacion2.Substring(0, tabulacion2.Length - 1) + cadenas;
+            }
+            else if (cadenas.Contains("}"))
+            {
+                tabulacion2 = tabulacion2.Substring(0, tabulacion2.Length - 1);
+                return tabulacion2 + cadenas;
+            }
+            else
+            {
+                return tabulacion2 + cadenas;
+            }
+        }
+
         // hacer metodo que imprima la lista.SNT
 
         /*
@@ -83,8 +103,8 @@ namespace Generador
             
             Programa(primeraProduccion);
 
-            lenguaje.WriteLine("\t}");
-            lenguaje.WriteLine("}");
+            lenguaje.WriteLine(calculadorTab("}"));
+            lenguaje.WriteLine(calculadorTab("}"));
         }
         private bool esSNT(string contenido)
         {
@@ -123,32 +143,33 @@ namespace Generador
 
         private void Programa(string primeraProduccion)
         {
-            programa.WriteLine(calculadorTab("using System;"));
-            programa.WriteLine(calculadorTab("using System.IO;"));
-            programa.WriteLine(calculadorTab("using System.Collections.Generic;"));
-            programa.WriteLine(calculadorTab("namespace Generico"));
-            programa.WriteLine(calculadorTab("{"));
-            programa.WriteLine(calculadorTab("public class Generico"));
-            programa.WriteLine(calculadorTab("{"));
-            programa.WriteLine(calculadorTab("static void Main(string[] args)"));
-            programa.WriteLine(calculadorTab("{"));
-            programa.WriteLine(calculadorTab("try"));
-            programa.WriteLine(calculadorTab("{"));
-            programa.WriteLine(calculadorTab("instanciaObjeto();"));
-            programa.WriteLine(calculadorTab("GC.Collect();"));
-            programa.WriteLine(calculadorTab("}"));
-            programa.WriteLine(calculadorTab("catch (Exception e)"));
-            programa.WriteLine(calculadorTab("{"));
-            programa.WriteLine(calculadorTab("Console.WriteLine(e.Message);"));
-            programa.WriteLine(calculadorTab("}"));
-            programa.WriteLine(calculadorTab("}"));
-            programa.WriteLine(calculadorTab("static void instanciaObjeto()"));
-            programa.WriteLine(calculadorTab("{"));
-            programa.WriteLine(calculadorTab("Lenguaje a = new Lenguaje();"));
-            programa.WriteLine(calculadorTab(("a." + primeraProduccion + "();")));
-            programa.WriteLine(calculadorTab("}"));
-            programa.WriteLine(calculadorTab("}"));
-            programa.WriteLine(calculadorTab("}"));
+            programa.WriteLine(calculadorTab2("using System;"));
+            programa.WriteLine(calculadorTab2("using System.IO;"));
+            programa.WriteLine(calculadorTab2("using System.Collections.Generic;"));
+            programa.WriteLine(calculadorTab2(""));
+            programa.WriteLine(calculadorTab2("namespace Generico"));
+            programa.WriteLine(calculadorTab2("{"));
+            programa.WriteLine(calculadorTab2("public class Generico"));
+            programa.WriteLine(calculadorTab2("{"));
+            programa.WriteLine(calculadorTab2("static void Main(string[] args)"));
+            programa.WriteLine(calculadorTab2("{"));
+            programa.WriteLine(calculadorTab2("try"));
+            programa.WriteLine(calculadorTab2("{"));
+            programa.WriteLine(calculadorTab2("instanciaObjeto();"));
+            programa.WriteLine(calculadorTab2("GC.Collect();"));
+            programa.WriteLine(calculadorTab2("}"));
+            programa.WriteLine(calculadorTab2("catch (Exception e)"));
+            programa.WriteLine(calculadorTab2("{"));
+            programa.WriteLine(calculadorTab2("Console.WriteLine(e.Message);"));
+            programa.WriteLine(calculadorTab2("}"));
+            programa.WriteLine(calculadorTab2("}"));
+            programa.WriteLine(calculadorTab2("static void instanciaObjeto()"));
+            programa.WriteLine(calculadorTab2("{"));
+            programa.WriteLine(calculadorTab2("Lenguaje a = new Lenguaje();"));
+            programa.WriteLine(calculadorTab2(("a." + primeraProduccion + "();")));
+            programa.WriteLine(calculadorTab2("}"));
+            programa.WriteLine(calculadorTab2("}"));
+            programa.WriteLine(calculadorTab2("}"));
 
         }
 
@@ -165,7 +186,8 @@ namespace Generador
             lenguaje.WriteLine(calculadorTab("using System;"));
             lenguaje.WriteLine(calculadorTab("using System.IO;"));
             lenguaje.WriteLine(calculadorTab("using System.Collections.Generic;"));
-            lenguaje.WriteLine(calculadorTab("namespace Generador"));
+            lenguaje.WriteLine(calculadorTab(""));
+            lenguaje.WriteLine(calculadorTab("namespace Generico"));
             lenguaje.WriteLine(calculadorTab("{"));
             lenguaje.WriteLine(calculadorTab("public class Lenguaje : Sintaxis"));
             lenguaje.WriteLine(calculadorTab("{"));
@@ -197,7 +219,7 @@ namespace Generador
                 tipoProduccion = "private";
             }
 
-            lenguaje.WriteLine(calculadorTab(calculadorTab(tipoProduccion + " void " + getContenido() + "()")));
+            lenguaje.WriteLine(calculadorTab(tipoProduccion + " void " + getContenido() + "()"));
             lenguaje.WriteLine(calculadorTab("{"));
             match(Tipos.ST);
             match(Tipos.Produce);

@@ -14,7 +14,7 @@
 // Requerimiento 5.- Resolver la ambiguedad de ST, y SNT
 //                   Recorrer linea por linea el archivo gram opara para exraer el nombre de cada producción
 
-// Requerimiento 6.- Agregar el paréntesis izquierdo y derecho escapados en la matriz de transiciones.
+// Requerimiento 6.- Agregar el paréntesis izquierdo y derecho escapados en la matriz de transiciones. * 
 
 // Requerimiento 7.- Implementar la cerradura epsilon
 
@@ -64,7 +64,7 @@ namespace Generador
 
             primeraProduccion = getContenido();
             Programa(primeraProduccion);
-        
+
             cabeceraLenguaje();
             listadeProducciones();
             lenguaje.WriteLine("}");
@@ -74,10 +74,35 @@ namespace Generador
         {
             return listaSNT.Contains(contenido);
         }
+
+        // Recorrer linea por linea para extrar los SNT
         private void agregarSNT(string contenido)
         {
-            // Requerimiento 5
-            listaSNT.Add(contenido);
+            int actualLinea = linea;
+
+            int actualContador = contador;
+
+            string variable = getContenido();
+
+            while (!FinArchivo())
+            {
+                NextToken();
+                if (getClasificacion() == Tipos.FinProduccion)
+                {
+                    NextToken();
+                    listaSNT.Add(getContenido());
+                }
+            }
+
+            linea = actualLinea;
+
+            contador = actualContador - variable.Length;
+
+            archivo.DiscardBufferedData();
+            archivo.BaseStream.Seek(contador, SeekOrigin.Begin);
+
+            NextToken();
+
         }
 
         private void Programa(string primeraProduccion)

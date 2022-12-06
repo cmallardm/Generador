@@ -12,19 +12,20 @@ namespace Generador
         protected StreamWriter programa;  
         const int F = -1;
         const int E = -2;
-        protected int linea;
-        protected int contador;
+        public int linea;
+        public int contador;
         int[,] TRAND = new int[,]
         {
-            {0, 1, 8, 3, 4, 8, 5, 8, 8},
-            {F, F, 2, F, F, F, F, F, F},
-            {F, F, F, F, F, F, F, F, F},
-            {F, F, F, 3, F, F, F, F, F},
-            {F, F, F, F, F, F, F, F, F},
-            {F, F, F, F, F, F, F, 6, 7},
-            {F, F, F, F, F, F, F, F, F},
-            {F, F, F, F, F, F, F, F, F},
-            {F, F, F, F, F, F, F, F, F}
+//          WS, -, >, L, EOL, Lambda, \, (, )
+            {0, 1, 8, 3, 4,   8,      5, 8, 8},
+            {F, F, 2, F, F,   F,      F, F, F},
+            {F, F, F, F, F,   F,      F, F, F},
+            {F, F, F, 3, F,   F,      F, F, F},
+            {F, F, F, F, F,   F,      F, F, F},
+            {F, F, F, F, F,   F,      F, 6, 7},
+            {F, F, F, F, F,   F,      F, F, F},
+            {F, F, F, F, F,   F,      F, F, F},
+            {F, F, F, F, F,   F,      F, F, F}
         };
         public Lexico()
         {

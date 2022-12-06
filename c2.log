@@ -1,9 +1,140 @@
 Archivo: c2.gram
-12/5/2022 9:57:49 AM
+12/5/2022 9:28:54 PM
 Gramatica ST 
 : ST 
 cplusplus ST 
 
  FinProduccion 
 Programa ST 
-Error de sintaxis, se espera un SNT en linea: 2
+-> Produce 
+Librerias ST 
+Variables ST 
+Main ST 
+
+ FinProduccion 
+Main ST 
+-> Produce 
+TipoDato ST 
+main ST 
+( ST 
+) ST 
+BloqueInstrucciones ST 
+
+ FinProduccion 
+Librerias ST 
+-> Produce 
+# ST 
+include ST 
+< ST 
+Identificador ST 
+. ST 
+h ST 
+> ST 
+
+ FinProduccion 
+Variables ST 
+-> Produce 
+Identificador ST 
+
+ FinProduccion 
+Printf ST 
+-> Produce 
+printf ST 
+Cadena ST 
+
+ FinProduccion 
+Scanf ST 
+-> Produce 
+scanf ST 
+Cadena ST 
+
+ FinProduccion 
+BloqueInstrucciones ST 
+-> Produce 
+{ ST 
+ListaInstrucciones ST 
+} ST 
+
+ FinProduccion 
+ListaInstrucciones ST 
+-> Produce 
+Instruccion ST 
+; ST 
+ListaInstrucciones ST 
+
+ FinProduccion 
+Instruccion ST 
+-> Produce 
+Printf ST 
+( ST 
+Scanf ST 
+) ST 
+Gramatica ST 
+: ST 
+cplusplus ST 
+
+ FinProduccion 
+Programa ST 
+-> Produce 
+Librerias ST 
+Variables ST 
+Main ST 
+
+ FinProduccion 
+Main ST 
+-> Produce 
+TipoDato ST 
+main ST 
+( ST 
+) ST 
+BloqueInstrucciones ST 
+
+ FinProduccion 
+Librerias ST 
+-> Produce 
+# ST 
+include ST 
+< ST 
+Identificador ST 
+. ST 
+h ST 
+> ST 
+
+ FinProduccion 
+Variables ST 
+-> Produce 
+Identificador ST 
+
+ FinProduccion 
+Printf ST 
+-> Produce 
+printf ST 
+Cadena ST 
+
+ FinProduccion 
+Scanf ST 
+-> Produce 
+scanf ST 
+Cadena ST 
+
+ FinProduccion 
+BloqueInstrucciones ST 
+-> Produce 
+{ ST 
+ListaInstrucciones ST 
+} ST 
+
+ FinProduccion 
+ListaInstrucciones ST 
+-> Produce 
+Instruccion ST 
+; ST 
+ListaInstrucciones ST 
+
+ FinProduccion 
+Instruccion ST 
+-> Produce 
+Printf ST 
+( ST 
+Scanf ST 
+) ST 

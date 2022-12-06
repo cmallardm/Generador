@@ -17,6 +17,7 @@ namespace Generador
 
         public void match(string espera)
         {
+            Console.WriteLine("Espera: " + espera + " Contenido: " + getContenido());
             if (espera == getContenido())
             {
                 NextToken();

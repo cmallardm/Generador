@@ -58,16 +58,32 @@ namespace Generador
             }
         }
 
+        // hacer metodo que imprima la lista.SNT
+
+        /*
+        public void imprimirSNT()
+        {
+            foreach (string snt in listaSNT)
+            {
+                Console.WriteLine(snt);
+            }
+        }
+        */ // taba debuggeando
+
         public void Gramatica()
         {
+            agregarSNT();
+            
             cabecera();
 
             primeraProduccion = getContenido();
-            Programa(primeraProduccion);
 
             cabeceraLenguaje();
             listadeProducciones();
-            lenguaje.WriteLine("}");
+            
+            Programa(primeraProduccion);
+
+            lenguaje.WriteLine("\t}");
             lenguaje.WriteLine("}");
         }
         private bool esSNT(string contenido)
@@ -76,7 +92,7 @@ namespace Generador
         }
 
         // Recorrer linea por linea para extrar los SNT
-        private void agregarSNT(string contenido)
+        private void agregarSNT()
         {
             int actualLinea = linea;
 
@@ -146,7 +162,24 @@ namespace Generador
 
         private void cabeceraLenguaje()
         {
-
+            lenguaje.WriteLine(calculadorTab("using System;"));
+            lenguaje.WriteLine(calculadorTab("using System.IO;"));
+            lenguaje.WriteLine(calculadorTab("using System.Collections.Generic;"));
+            lenguaje.WriteLine(calculadorTab("namespace Generador"));
+            lenguaje.WriteLine(calculadorTab("{"));
+            lenguaje.WriteLine(calculadorTab("public class Lenguaje : Sintaxis"));
+            lenguaje.WriteLine(calculadorTab("{"));
+            lenguaje.WriteLine(calculadorTab("string nombreProyecto;"));
+            lenguaje.WriteLine(calculadorTab("public Lenguaje(string nombre) : base(nombre)"));
+            lenguaje.WriteLine(calculadorTab("{"));
+            lenguaje.WriteLine(calculadorTab("}"));
+            lenguaje.WriteLine(calculadorTab("public Lenguaje()"));
+            lenguaje.WriteLine(calculadorTab("{"));
+            lenguaje.WriteLine(calculadorTab("}"));
+            lenguaje.WriteLine(calculadorTab("public void Dispose()"));
+            lenguaje.WriteLine(calculadorTab("{"));
+            lenguaje.WriteLine(calculadorTab("cerrar();"));
+            lenguaje.WriteLine(calculadorTab("}"));
         }
 
         int contadorProducciones = 0;
@@ -164,29 +197,36 @@ namespace Generador
                 tipoProduccion = "private";
             }
 
-            lenguaje.WriteLine(tipoProduccion + " void " + getContenido() + "()");
-            lenguaje.WriteLine("{");
-            match(Tipos.SNT);
+            lenguaje.WriteLine(calculadorTab(calculadorTab(tipoProduccion + " void " + getContenido() + "()")));
+            lenguaje.WriteLine(calculadorTab("{"));
+            match(Tipos.ST);
             match(Tipos.Produce);
             simbolos();
             match(Tipos.FinProduccion);
-            lenguaje.WriteLine("}");
+            lenguaje.WriteLine(calculadorTab("}"));
             if (!FinArchivo())
             {
                 contadorProducciones++;
                 listadeProducciones();
             }
         }
+
+        
         private void simbolos()
         {
+            Console.WriteLine(esSNT(getContenido()));
             if (esTipo(getContenido()))
             {
-                lenguaje.WriteLine("\t\t\tmatch(Tipos." + getContenido() + ");");
-                match(Tipos.SNT);
+                lenguaje.WriteLine(calculadorTab("match(Tipos." + getContenido() + ");"));
+                match(Tipos.ST);
             }
-            else if (getClasificacion() == Tipos.ST)
+            else if (esSNT(getContenido()))
             {
-                lenguaje.WriteLine("\t\t\t" + getContenido() + "();");
+                lenguaje.WriteLine(calculadorTab(getContenido() + "();"));
+                match(Tipos.ST);
+            }else if (getClasificacion() == Tipos.ST)
+            {
+                lenguaje.WriteLine(calculadorTab("match(\"" + getContenido() + "\");"));
                 match(Tipos.ST);
             }
             if (getClasificacion() != Tipos.FinProduccion)
@@ -194,6 +234,7 @@ namespace Generador
                 simbolos();
             }
         }
+
 
         private bool esTipo(string clasificacion)
         {
